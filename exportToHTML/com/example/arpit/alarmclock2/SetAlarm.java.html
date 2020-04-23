@@ -1,0 +1,91 @@
+<html>
+<head>
+<title>SetAlarm.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #606366; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(204,120,50); }
+.s1 { color: rgb(169,183,198); }
+.s2 { color: rgb(106,135,89); }
+.s3 { color: rgb(104,151,187); }
+</style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+SetAlarm.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">package </span><span class="s1">com.example.arpit.alarmclock2</span><span class="s0">;</span><span class="s1"> 
+ 
+</span><span class="s0">import </span><span class="s1">android.annotation.SuppressLint</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.content.Intent</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.provider.AlarmClock</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.support.v7.app.AppCompatActivity</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.os.Bundle</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.view.View</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.widget.Button</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.widget.EditText</span><span class="s0">;</span><span class="s1"> 
+ 
+</span><span class="s0">public class </span><span class="s1">SetAlarm </span><span class="s0">extends </span><span class="s1">AppCompatActivity { 
+ 
+    Button mSetAlarmButton</span><span class="s0">;</span><span class="s1"> 
+ 
+    </span><span class="s0">public </span><span class="s1">String hourTimeString</span><span class="s0">, </span><span class="s1">minTimeString 
+            </span><span class="s0">,</span><span class="s1">hourReadyString</span><span class="s0">, </span><span class="s1">minReadyString</span><span class="s0">;</span><span class="s1"> 
+ 
+    </span><span class="s0">public int </span><span class="s1">hourTimeInt</span><span class="s0">, </span><span class="s1">minTimeInt 
+            </span><span class="s0">,</span><span class="s1">hourReadyInt</span><span class="s0">, </span><span class="s1">minReadyInt</span><span class="s0">;</span><span class="s1"> 
+ 
+    </span><span class="s0">public int </span><span class="s1">alarmHourInt</span><span class="s0">, </span><span class="s1">alarmMinInt</span><span class="s0">;</span><span class="s1"> 
+ 
+    </span><span class="s0">public </span><span class="s1">EditText travelTimeText</span><span class="s0">;</span><span class="s1"> 
+ 
+    </span><span class="s0">public int </span><span class="s1">travelTimeInt</span><span class="s0">;</span><span class="s1"> 
+ 
+    @SuppressLint(</span><span class="s2">&quot;WrongViewCast&quot;</span><span class="s1">) 
+    @Override 
+    </span><span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) { 
+        </span><span class="s0">super</span><span class="s1">.onCreate(savedInstanceState)</span><span class="s0">;</span><span class="s1"> 
+        setContentView(R.layout.set_alarm)</span><span class="s0">;</span><span class="s1"> 
+ 
+        Bundle bundle = getIntent().getExtras()</span><span class="s0">;</span><span class="s1"> 
+        hourTimeString = bundle.getString(</span><span class="s2">&quot;hourTimeString&quot;</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+        minTimeString = bundle.getString(</span><span class="s2">&quot;minTimeString&quot;</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+        hourReadyString = bundle.getString(</span><span class="s2">&quot;hourReadyString&quot;</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+        minReadyString = bundle.getString(</span><span class="s2">&quot;minReadyString&quot;</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+ 
+        hourTimeInt = Integer.parseInt(hourTimeString)</span><span class="s0">;</span><span class="s1"> 
+        minTimeInt = Integer.parseInt(minTimeString)</span><span class="s0">;</span><span class="s1"> 
+        hourReadyInt = Integer.parseInt(hourReadyString)</span><span class="s0">;</span><span class="s1"> 
+        minReadyInt = Integer.parseInt(minReadyString)</span><span class="s0">;</span><span class="s1"> 
+ 
+        travelTimeText = (EditText) findViewById(R.id.travelTimeText)</span><span class="s0">;</span><span class="s1"> 
+        mSetAlarmButton=(Button)findViewById(R.id.set_alarm_button)</span><span class="s0">;</span><span class="s1"> 
+        mSetAlarmButton.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() { 
+            @Override 
+            </span><span class="s0">public void </span><span class="s1">onClick(View view) { 
+ 
+                travelTimeInt = Integer.parseInt(String.valueOf(travelTimeText.getText()))</span><span class="s0">;</span><span class="s1"> 
+                </span><span class="s0">int </span><span class="s1">latency = (hourTimeInt - hourReadyInt)</span><span class="s0">;</span><span class="s1"> 
+                alarmHourInt = ((latency) - (travelTimeInt))</span><span class="s0">;</span><span class="s1"> 
+                alarmMinInt = (minTimeInt - minReadyInt)</span><span class="s0">;</span><span class="s1"> 
+                 
+                Intent intent = </span><span class="s0">new </span><span class="s1">Intent(AlarmClock.ACTION_SET_ALARM)</span><span class="s0">;</span><span class="s1"> 
+                intent.putExtra(AlarmClock.EXTRA_HOUR</span><span class="s0">, </span><span class="s1">alarmHourInt)</span><span class="s0">;</span><span class="s1"> 
+                intent.putExtra(AlarmClock.EXTRA_MINUTES</span><span class="s0">, </span><span class="s1">alarmMinInt)</span><span class="s0">;</span><span class="s1"> 
+                 
+                </span><span class="s0">if </span><span class="s1">(hour &lt; </span><span class="s3">24 </span><span class="s1">&amp;&amp; minute &lt;= </span><span class="s3">60</span><span class="s1">) { 
+                    startActivity(intent)</span><span class="s0">;</span><span class="s1"> 
+ 
+                } 
+            } 
+        })</span><span class="s0">;</span><span class="s1"> 
+         
+    } 
+    } 
+ 
+</span></pre>
+</body>
+</html>

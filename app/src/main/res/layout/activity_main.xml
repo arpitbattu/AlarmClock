@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/AppTheme">
+    tools:context=".MainActivity"
+    tools:layout_editor_absoluteY="25dp">
+
+    <ImageView
+        android:id="@+id/backgroundPic"
+        android:layout_width="wrap_content"
+        android:layout_height="821dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.145"
+        app:srcCompat="@mipmap/blurry_background" />
+
+    <TextView
+        android:id="@+id/welcomeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="serif"
+        android:text="@string/app_name"
+        android:textSize="50sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/backgroundPic" />
+
+    <ImageButton
+        android:id="@+id/newAlarmButton"
+        android:layout_width="336dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="285dp"
+        android:layout_marginBottom="95dp"
+        app:layout_constraintBottom_toTopOf="@+id/seeAlarmsButton"
+        app:layout_constraintStart_toStartOf="@+id/backgroundPic"
+        app:layout_constraintTop_toTopOf="@id/backgroundPic"
+        app:srcCompat="@mipmap/button_background"
+        tools:srcCompat="@mipmap/button_background" />
+
+    <ImageButton
+        android:id="@+id/seeAlarmsButton"
+        android:layout_width="336dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="151dp"
+        android:contentDescription="TODO"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/backgroundPic"
+        app:layout_constraintTop_toBottomOf="@+id/newAlarmButton"
+        app:srcCompat="@mipmap/button_background"
+        tools:srcCompat="@mipmap/button_background" />
+
+    <ImageButton
+        android:id="@+id/mapsButton"
+        android:layout_width="51dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="4dp"
+        android:contentDescription="TODO"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="7dp"
+        tools:srcCompat="@mipmap/ic_gps" />
+
+    <TextView
+        android:id="@+id/createAlarmText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create a new alarm"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/newAlarmButton"
+        app:layout_constraintEnd_toEndOf="@+id/newAlarmButton"
+        app:layout_constraintStart_toStartOf="@+id/newAlarmButton"
+        app:layout_constraintTop_toTopOf="@+id/newAlarmButton" />
+
+    <TextView
+        android:id="@+id/seeAlarmText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="See your set alarms"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/seeAlarmsButton"
+        app:layout_constraintEnd_toEndOf="@+id/seeAlarmsButton"
+        app:layout_constraintStart_toStartOf="@+id/seeAlarmsButton"
+        app:layout_constraintTop_toTopOf="@+id/seeAlarmsButton" />
+
+</android.support.constraint.ConstraintLayout>
